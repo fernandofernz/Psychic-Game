@@ -14,42 +14,44 @@ var guessesSoFar = [];
 var userInput;
 
 
-document.querySelector('#wins').innerHTML= "Wins: " + wins;
-document.querySelector('#losses').innerHTML= "Losses: " + losses;
-document.querySelector('#userTries').innerHTML= "Guesses left: " + userTries;
+document.querySelector('#wins').innerHTML = "Wins: " + wins;
+document.querySelector('#losses').innerHTML = "Losses: " + losses;
+document.querySelector('#userTries').innerHTML = "Guesses left: " + userTries;
+document.querySelector('#guessesSoFar').innerHTML = "Guesses so far: " + guessesSoFar;
 
 document.onkeyup = function (event) {
-    
+
     var userInput = event.key;
     guessesSoFar.push(userInput);
     userTries--;
-    document.querySelector('#userTries').innerHTML= "Guesses left: " + userTries;
+    document.querySelector('#userTries').innerHTML = "Guesses left: " + userTries;
+    document.querySelector('#guessesSoFar').innerHTML = "Guesses so far: " + guessesSoFar;
 
     var reset = function () {
         userTries = 9;
         guessesSoFar = [];
         computerGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
     }
-    console.log(userInput);
-    console.log(computerGuess);
-    console.log(wins);
+console.log(userInput);
+console.log(guessesSoFar);
+console.log(computerGuess);
+console.log(userTries);
 
 
     if (userTries > 0) {
 
         if (userInput == computerGuess) {
             wins++;
-            document.querySelector('#wins').innerHTML= "Wins: " + wins;
-            //console.log(wins);
+            document.querySelector('#wins').innerHTML = "Wins: " + wins;
+
             reset();
         }
     } else if (userTries == 0) {
-    
+
         losses++;
-        document.querySelector('#losses').innerHTML= "Losses: " + losses;
-        //console.log(wins);
+        document.querySelector('#losses').innerHTML = "Losses: " + losses;
+
         reset();
     }
-    
-}
 
+}
